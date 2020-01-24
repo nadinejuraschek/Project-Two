@@ -25,13 +25,13 @@ module.exports = function(passport, user) {
                     });
                 } else {
                     var userPassword = generateHash(password);
-                    console.log(req.body.firstName);
+                    console.log(req.body.first_name);
                     var data =
                         {
                             email: email,
                             password: userPassword,
-                            firstname: req.body.firstName,
-                            lastname: req.body.lastName
+                            first_name: req.body.first_name,
+                            last_name: req.body.last_name
                         };
                     User.create(data).then(function(newUser, created) {
                         if (!newUser) {
