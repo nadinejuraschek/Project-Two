@@ -1,16 +1,29 @@
 require("dotenv").config();
-const express = require("express"),
-  ejs = require("ejs");
+const   express = require("express"),
+        ejs     = require("ejs");
 
 const db = require("./models");
 
 const app = express();
+
+const   passport   = require('passport'),
+        session    = require('express-session');
+
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+
+// ROUTES
+var authRoute = require('./routes/auth.js')(app, passport);
+require('./config/passport/passport.js')(passport, db.user);
+
+// PASSPORT
+app.use(session({ secret: 'education',resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // EJS
 app.set("view engine", "ejs");

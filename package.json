@@ -11,11 +11,15 @@
   },
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "^4.17.0",
+    "express-session": "^1.17.0",
     "googleapis": "^39.2.0",
     "mysql2": "^1.6.5",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "sequelize": "^5.8.6",
     "serve-favicon": "^2.5.0"
   },
